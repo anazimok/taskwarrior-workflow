@@ -5,9 +5,10 @@ $CMD_PATH="/usr/local/bin/task";
 
 $alias = array(
     "ls" => "pending",
+    "del" => "deleted",
+    "wait" => "waiting",
     "comp" => "completed",
-    "done" => "completed",
-    "completed" => "completed"
+    "recur" => "recurring"
 );
 
 $q = trim($argv[1]);

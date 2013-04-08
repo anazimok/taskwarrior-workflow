@@ -6,6 +6,17 @@
 	<string>taskwarrior</string>
 	<key>connections</key>
 	<dict>
+		<key>48E7E03F-5008-4960-B5A2-91E823996BF7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DB3E231E-33E1-4896-995C-A217AC03B1A3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>91308BA8-3EBE-4DD6-BC87-C56429F3E8A2</key>
 		<array>
 			<dict>
@@ -22,7 +33,15 @@
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
-				<string></string>
+				<string>Complete Task</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>90121749-5C73-48D0-9321-23D705306048</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Remove Task</string>
 			</dict>
 		</array>
 	</dict>
@@ -36,6 +55,49 @@
 	<string>Taskwarrior</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>t add</string>
+				<key>text</key>
+				<string>Add Taskwarrior Task</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>48E7E03F-5008-4960-B5A2-91E823996BF7</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>task {query} done</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>task add "{query}"</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.terminalcommand</string>
+			<key>uid</key>
+			<string>DB3E231E-33E1-4896-995C-A217AC03B1A3</string>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -67,12 +129,12 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>task {query} done</string>
+				<string>task {query} edit</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.terminalcommand</string>
 			<key>uid</key>
-			<string>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</string>
+			<string>DF741466-7972-407A-B5AC-CB9C8B8CEE86</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -80,12 +142,12 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>task {query} edit</string>
+				<string>task "{query}" rm</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.terminalcommand</string>
 			<key>uid</key>
-			<string>DF741466-7972-407A-B5AC-CB9C8B8CEE86</string>
+			<string>90121749-5C73-48D0-9321-23D705306048</string>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -95,12 +157,27 @@
 		<key>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>120</real>
+		</dict>
+		<key>48E7E03F-5008-4960-B5A2-91E823996BF7</key>
+		<dict>
+			<key>ypos</key>
+			<real>360</real>
+		</dict>
+		<key>90121749-5C73-48D0-9321-23D705306048</key>
+		<dict>
+			<key>ypos</key>
+			<real>230</real>
 		</dict>
 		<key>91308BA8-3EBE-4DD6-BC87-C56429F3E8A2</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>DB3E231E-33E1-4896-995C-A217AC03B1A3</key>
+		<dict>
+			<key>ypos</key>
+			<real>360</real>
 		</dict>
 		<key>DF741466-7972-407A-B5AC-CB9C8B8CEE86</key>
 		<dict>
