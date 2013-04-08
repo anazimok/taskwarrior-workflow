@@ -1,4 +1,4 @@
 {
-    "version": 1.1,
-    "remote_json": "https://raw.github.com/anazimok/taskwarrior-workflow/master/update.json"
+    "version": 1.0,
+    "remote_json": "https://raw.github.com/anazimok/taskwarrior-workflow/master/version.json"
 }
