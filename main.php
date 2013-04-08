@@ -19,7 +19,6 @@ $output = "[" . shell_exec($CMD_PATH . " export status:".$alias[$q]) . "]";
 $json = json_decode($output);
 
 foreach($json as $task) {
-
     $wf->result(
         $task->id,
         $task->uuid,
@@ -31,25 +30,23 @@ foreach($json as $task) {
 
 echo $wf->toxml();
 
-
 function buildSubtitle($task) {
-    $start = date_parse($task->entry);
-    $end = date_parse($task->end);
+    $startDate = buildDate("Entered On:", date_parse($task->entry));
+    $endDate = buildDate("     Completed On:", date_parse($task->end));
+    $dueDate = buildDate("     Due On:", date_parse($task->due));
 
-    $startDate = sprintf("Entered On: %s/%s/%s",
-        $start['month'],
-        $start['day'],
-        $start['year']);
-
-    $endDate = sprintf("     Completed On: %s/%s/%s",
-        $end['month'],
-        $end['day'],
-        $end['year']);
-
-    if ($end['year'] == NULL) {
-        return $startDate . "    Press Cmd + Enter to complete the task";
+    if (strlen($endDate) == 0) {
+        return $startDate . $dueDate . "     Press Cmd + Enter to complete";
     } else {
         return $startDate . $endDate;
+    }
+}
+
+function buildDate($prefixText, $date) {
+    if ($date['year'] != NULL) {
+        return sprintf("%s %s/%s/%s", $prefixText, $date['month'], $date['day'], $date['year']);
+    } else {
+        return "";
     }
 }
 
