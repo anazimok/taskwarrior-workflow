@@ -4,11 +4,11 @@ require_once("workflows.php");
 $CMD_PATH="/usr/local/bin/task";
 
 $alias = array(
-    "ls" => "pending",
-    "del" => "deleted",
-    "wait" => "waiting",
-    "comp" => "completed",
-    "recur" => "recurring"
+    "l" => "pending",
+    "d" => "deleted",
+    "w" => "waiting",
+    "c" => "completed",
+    "r" => "recurring"
 );
 
 $q = trim($argv[1]);
@@ -20,7 +20,7 @@ if(substr($argv[1], 0, 4) == "add ") {
 } else {
     $wf = new Workflows();
 
-    $output = shell_exec($CMD_PATH . " export status:".$alias[$q]);
+    $output = shell_exec($CMD_PATH . " export status:" . $alias[substr($q, 0, 1)]);
 
     $json = json_decode($output);
 
@@ -49,6 +49,5 @@ function buildDate($prefixText, $date) {
         return "";
     }
 }
-
 
 ?>
