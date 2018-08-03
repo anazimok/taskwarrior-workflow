@@ -6,15 +6,17 @@
 	<string>taskwarrior</string>
 	<key>connections</key>
 	<dict>
-		<key>48E7E03F-5008-4960-B5A2-91E823996BF7</key>
+		<key>09A45808-1281-4F88-BDED-F300140A91A2</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>DB3E231E-33E1-4896-995C-A217AC03B1A3</string>
+				<string>457191AF-ACAC-4E90-A7D0-1213570DA9B0</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 		<key>91308BA8-3EBE-4DD6-BC87-C56429F3E8A2</key>
@@ -26,22 +28,67 @@
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</string>
+				<string>C99F2569-000B-446E-8CED-97B825E40FB7</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Complete Task</string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>90121749-5C73-48D0-9321-23D705306048</string>
+				<string>D2E5D7C8-771C-423C-803B-2F278716CB4F</string>
 				<key>modifiers</key>
 				<integer>524288</integer>
 				<key>modifiersubtext</key>
 				<string>Remove Task</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C99F2569-000B-446E-8CED-97B825E40FB7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>00075A5B-669D-49EB-9926-89A41E068A89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D2E5D7C8-771C-423C-803B-2F278716CB4F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>00075A5B-669D-49EB-9926-89A41E068A89</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>E0CE6E57-68D2-4932-9BE9-00C72C1772BB</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>09A45808-1281-4F88-BDED-F300140A91A2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
 			</dict>
 		</array>
 	</dict>
@@ -58,59 +105,51 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>t add</string>
-				<key>text</key>
-				<string>Add Taskwarrior Task</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>48E7E03F-5008-4960-B5A2-91E823996BF7</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>task {query} done</string>
+				<string>task {query} edit</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.terminalcommand</string>
 			<key>uid</key>
-			<string>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</string>
+			<string>DF741466-7972-407A-B5AC-CB9C8B8CEE86</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
-				<key>script</key>
-				<string>task add "{query}"</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.terminalcommand</string>
-			<key>uid</key>
-			<string>DB3E231E-33E1-4896-995C-A217AC03B1A3</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
 				<integer>63</integer>
 				<key>keyword</key>
 				<string>t</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
 				<key>runningsubtext</key>
 				<string>Please Wait</string>
 				<key>script</key>
 				<string>php -f main.php -- "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
 				<key>title</key>
 				<string>Taskwarrior Task List</string>
 				<key>type</key>
@@ -122,67 +161,201 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>91308BA8-3EBE-4DD6-BC87-C56429F3E8A2</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
 				<key>escaping</key>
-				<integer>0</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>task {query} edit</string>
+				<string>php -f main.php -- "exec {query} done"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.terminalcommand</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>DF741466-7972-407A-B5AC-CB9C8B8CEE86</string>
+			<string>C99F2569-000B-446E-8CED-97B825E40FB7</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>task "{query}" rm</string>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Success!</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.terminalcommand</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>90121749-5C73-48D0-9321-23D705306048</string>
+			<string>00075A5B-669D-49EB-9926-89A41E068A89</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>php -f main.php -- "exec {query} rm"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D2E5D7C8-771C-423C-803B-2F278716CB4F</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string>Task has been added successfully!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>457191AF-ACAC-4E90-A7D0-1213570DA9B0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>t add</string>
+				<key>subtext</key>
+				<string>Please wait</string>
+				<key>text</key>
+				<string>Add Taskwarrior Task</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>E0CE6E57-68D2-4932-9BE9-00C72C1772BB</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>118</integer>
+				<key>script</key>
+				<string>php -f main.php -- "add {query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>09A45808-1281-4F88-BDED-F300140A91A2</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>18D0109C-CD68-4BB3-BB40-CF5FB4803F01</key>
+		<key>00075A5B-669D-49EB-9926-89A41E068A89</key>
 		<dict>
+			<key>xpos</key>
+			<integer>890</integer>
 			<key>ypos</key>
-			<real>120</real>
+			<integer>170</integer>
 		</dict>
-		<key>48E7E03F-5008-4960-B5A2-91E823996BF7</key>
+		<key>09A45808-1281-4F88-BDED-F300140A91A2</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
-			<real>360</real>
+			<integer>400</integer>
 		</dict>
-		<key>90121749-5C73-48D0-9321-23D705306048</key>
+		<key>457191AF-ACAC-4E90-A7D0-1213570DA9B0</key>
 		<dict>
+			<key>xpos</key>
+			<integer>720</integer>
 			<key>ypos</key>
-			<real>230</real>
+			<integer>400</integer>
 		</dict>
 		<key>91308BA8-3EBE-4DD6-BC87-C56429F3E8A2</key>
 		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>120</integer>
 		</dict>
-		<key>DB3E231E-33E1-4896-995C-A217AC03B1A3</key>
+		<key>C99F2569-000B-446E-8CED-97B825E40FB7</key>
 		<dict>
+			<key>xpos</key>
+			<integer>660</integer>
 			<key>ypos</key>
-			<real>360</real>
+			<integer>120</integer>
+		</dict>
+		<key>D2E5D7C8-771C-423C-803B-2F278716CB4F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>660</integer>
+			<key>ypos</key>
+			<integer>230</integer>
 		</dict>
 		<key>DF741466-7972-407A-B5AC-CB9C8B8CEE86</key>
 		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>10</integer>
+		</dict>
+		<key>E0CE6E57-68D2-4932-9BE9-00C72C1772BB</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>400</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

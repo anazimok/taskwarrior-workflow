@@ -12,34 +12,34 @@ $alias = array(
 );
 
 $q = trim($argv[1]);
-$wf = new Workflows();
 
-$output = "[" . shell_exec($CMD_PATH . " export status:".$alias[$q]) . "]";
+if(substr($argv[1], 0, 4) == "add ") {
+    shell_exec($CMD_PATH . " " . $argv[1]);
+} elseif (substr($argv[1], 0, 5) == "exec ") {
+    shell_exec($CMD_PATH . " " . substr($argv[1], 5, strlen($argv[1])));
+} else {
+    $wf = new Workflows();
 
-$json = json_decode($output);
+    $output = shell_exec($CMD_PATH . " export status:".$alias[$q]);
 
-foreach($json as $task) {
-    $wf->result(
-        $task->id,
-        $task->uuid,
-        $task->description,
-        buildSubtitle($task),
-        'icon.png'
-    );
+    $json = json_decode($output);
+
+    foreach($json as $task) {
+        $wf->result(
+            $task->id,
+            $task->uuid,
+            $task->description,
+            buildSubtitle($task),
+            'icon.png'
+        );
+    }
+
+    echo $wf->toxml();
 }
 
-echo $wf->toxml();
-
 function buildSubtitle($task) {
-    $startDate = buildDate("Entered On:", date_parse($task->entry));
-    $endDate = buildDate("     Completed On:", date_parse($task->end));
-    $dueDate = buildDate("     Due On:", date_parse($task->due));
-
-    if (strlen($endDate) == 0) {
-        return $startDate . $dueDate . "     Press Cmd + Enter to complete";
-    } else {
-        return $startDate . $endDate;
-    }
+    $dueDate = buildDate("Due On:", date_parse($task->due));
+    return $dueDate;
 }
 
 function buildDate($prefixText, $date) {
@@ -49,5 +49,6 @@ function buildDate($prefixText, $date) {
         return "";
     }
 }
+
 
 ?>
