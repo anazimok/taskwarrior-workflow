@@ -20,21 +20,32 @@ if(substr($argv[1], 0, 4) == "add ") {
 } else {
     $wf = new Workflows();
 
-    $output = shell_exec($CMD_PATH . " export status:" . $alias[substr($q, 0, 1)]);
+    if(strpos($q, "due:")) {
+        $output = shell_exec($CMD_PATH . " export status:" . $alias[substr($q, 0, 1)] . " " . substr($q, strpos($q, "due:")));
+    } else {
+        $output = shell_exec($CMD_PATH . " export status:" . $alias[substr($q, 0, 1)]);
+    }
 
     $json = json_decode($output);
 
-    foreach($json as $task) {
-        $wf->result(
-            $task->id,
-            $task->uuid,
-            $task->description,
-            buildSubtitle($task),
-            'icon.png'
-        );
+    if(empty($json)) {
+        warning_handler();
+    } else {
+        foreach($json as $task) {
+            $wf->result(
+                $task->id,
+                $task->uuid,
+                $task->description,
+                buildSubtitle($task),
+                'icon.png'
+            );
+        }
+        echo $wf->toxml();
     }
+}
 
-    echo $wf->toxml();
+function warning_handler() {
+    echo "<?xml version=\"1.0\"?><items><item uid=\"1\" valid=\"no\" autocomplete=\"\"><title>NO DATA FOUND</title><icon>icon.png</icon></item></items>";
 }
 
 function buildSubtitle($task) {
