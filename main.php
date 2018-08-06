@@ -50,7 +50,11 @@ function warning_handler() {
 }
 
 function build_subtitle($task) {
-    $dueDate = build_date("Due:", date_parse($task->due));
+    if ($task->wait) {
+        $dueDate = build_date("Waiting till:", date_parse($task->wait));
+    } else {
+        $dueDate = build_date("Due:", date_parse($task->due));
+    }
     return $dueDate;
 }
 
