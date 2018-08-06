@@ -36,24 +36,25 @@ if(substr($argv[1], 0, 4) == "add ") {
                 $task->id,
                 $task->uuid,
                 $task->description,
-                buildSubtitle($task),
+                build_subtitle($task),
                 'icon.png'
             );
         }
+
         echo $wf->toxml();
     }
 }
 
 function warning_handler() {
-    echo "<?xml version=\"1.0\"?><items><item uid=\"1\" valid=\"no\" autocomplete=\"\"><title>NO DATA FOUND</title><icon>icon.png</icon></item></items>";
+    echo "<?xml version=\"1.0\"?><items><item uid=\"1\" valid=\"no\" autocomplete=\"\"><title>...</title><icon>icon.png</icon></item></items>";
 }
 
-function buildSubtitle($task) {
-    $dueDate = buildDate("Due On:", date_parse($task->due));
+function build_subtitle($task) {
+    $dueDate = build_date("Due:", date_parse($task->due));
     return $dueDate;
 }
 
-function buildDate($prefixText, $date) {
+function build_date($prefixText, $date) {
     if ($date['year'] != NULL) {
         return sprintf("%s %s/%s/%s", $prefixText, $date['month'], $date['day'], $date['year']);
     } else {
